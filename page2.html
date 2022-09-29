@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ready to Help</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: white;
+      color: rgb(20, 19, 19);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    a {
+      color: #262626;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* Nav */
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      padding: 20px 0;
+      font-size: 13px;
+      position: sticky;
+      top: 0px;
+      background-color: white;
+    }
+
+    .main-nav .logo {
+      width: 80px;
+      height: 60px;
+    }
+
+    .main-nav ul {
+      display: flex;
+    }
+
+    .main-nav ul li {
+      padding: 0 10px;
+    }
+
+    .main-nav ul li a {
+      padding-bottom: 2px;
+    }
+
+    .main-nav ul li a:hover {
+      border-bottom: 2px solid #262626;
+    }
+
+    .main-nav ul.main-menu {
+      flex: 1;
+      margin-left: 20px;
+      font-size: 20px;
+
+    }
+
+    .menu-btn {
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      z-index: 2;
+      display: none;
+    }
+
+    .btn {
+      cursor: pointer;
+      display: inline-block;
+      border: 0;
+      font-weight: bold;
+      padding: 10px 20px;
+      background: #262626;
+      color: #fff;
+      font-size: 15px;
+      ;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .dark {
+      color: #fff;
+    }
+
+    .dark .btn {
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    .chat {
+      width: 70px;
+      height: 50px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 40px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+      position: fixed;
+      bottom: 20px;
+      transition: background 0.25;
+    }
+
+    .chat:active {
+      background: #007d63;
+      ;
+    }
+
+    /* Showcase */
+    .showcase {
+      width: 100%;
+      height: 800px;
+      background: url('housekeeping.jpg') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: flex-start;
+      padding-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .showcase h2,
+    .showcase p {
+      margin-bottom: 10px;
+    }
+
+    .showcase .btn {
+      margin-top: 20px;
+    }
+
+    /* Home cards */
+    .home-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .home-cards img {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .home-cards h3 {
+      margin-bottom: 5px;
+    }
+
+    .home-cards a {
+      display: inline-block;
+      padding-top: 10px;
+      color: #0067b8;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .home-cards a:hover i {
+      margin-left: 10px;
+    }
+
+
+
+    /* Carbon */
+    .carbon {
+      width: 100%;
+      height: 450px;
+      background: url('https://i.ibb.co/72cgtsz/carbon.jpg') no-repeat center center/cover;
+    }
+
+    .carbon .content {
+      width: 55%;
+      padding: 100px 0 0 30px;
+    }
+
+    /* Follow */
+    .follow {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 30px 0 30px;
+    }
+
+    .follow * {
+      margin-right: 10px;
+    }
+
+    /* Links */
+    .links {
+      background: #f2f2f2;
+      color: #616161;
+      font-size: 12px;
+      padding: 35px 0;
+    }
+
+    .links-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-gap: 10px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .links li {
+      line-height: 2.8;
+    }
+
+    /* Footer */
+    .footer {
+      background: rgb(214, 205, 205);
+      color: rgb(24, 20, 20);
+      font-size: 15px;
+      padding: 20px 0;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer div {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer div i {
+      margin-right: 10px;
+    }
+
+    .footer ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .footer li {
+      margin-right: 30px;
+      margin-bottom: 20px;
+    }
+
+    @media(max-width: 700px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .menu-btn:hover {
+        opacity: 0.5;
+      }
+
+      .main-nav ul.right-menu {
+        margin-right: 50px;
+      }
+
+      .main-nav ul.main-menu {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #f2f2f2;
+        width: 50%;
+        height: 100%;
+        border-right: #ccc 1px solid;
+        opacity: 0.9;
+        padding: 30px;
+        transform: translateX(-500px);
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .main-nav ul.main-menu li {
+        padding: 10px;
+        border-bottom: #ccc solid 1px;
+        font-size: 14px;
+      }
+
+      .main-nav ul.main-menu li:last-child {
+        border-bottom: 0;
+      }
+
+      .main-nav ul.main-menu.show {
+        transform: translateX(-20px);
+      }
+
+      .home-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+
+
+      .carbon .content {
+        width: 85%;
+      }
+
+      .links .links-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width: 500px) {
+      .home-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .links .links-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .links .links-inner ul {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="menu-btn">
+    <i class="mbtn"></i>
+  </div>
+
+  <div class="container">
+    <!-- Nav -->
+    <nav class="main-nav">
+      <img src="star.jpg" alt="star" class="logo">
+
+
+      <ul class="main-menu">
+        <li><a href="page2.html">Home</a></li>
+        <li><a href="our Services.html">Our Services</a></li>
+        <li><a href="helper.html">Our Helpers</a></li>
+        <li><a href="howitworks.html">How it Works</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+
+      <ul class="right-menu">
+        <li>
+          <a href="#">
+            <i class="search"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="shopping-cart"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Showcase -->
+    <header class="showcase">
+      <h1>Ready to Help</h1>
+      <p>
+      <h2>Get the work done here!</h2>
+      </p>
+      <a href="login.html" class="btn">
+        Sign in <i class="hpage"></i>
+      </a>
+    </header>
+
+    <div class="chat">
+      <p>Hello</p>
+      <a href="index.html">
+        <img src="chat.png" alt="" srcset="">
+
+      </a>
+    </div>
+    <!-- Home cards 1 -->
+    <section class="home-cards">
+      <div>
+        <img src="caretaker.jpg" alt="">
+        <h3>Care Taker</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis expedita eaque totam.
+        </p>
+        <a href="caretaker.html">Learn More <i class="hpage"></i></a>
+      </div>
+      <div>
+        <img src="hk1.jpg" alt="" />
+        <h3>Housekeeping</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, quod.
+        </p>
+        <a href="housekeep.html">Learn More <i class="hpage"></i></a>
+      </div>
+      <div>
+        <img src="babysitter.jpg" alt="" />
+        <h3>Baby Sitter</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit sint culpa quasi.
+        </p>
+        <a href="babysitter.html">Learn More <i class="hpage"></i></a>
+      </div>
+      <div>
+        <img src="electrician.jpg" alt="" />
+        <h3>Electrician</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore provident perferendis ipsa.
+        </p>
+        <a href="electrician.html">Learn More <i class="hpage"></i></a>
+      </div>
+    </section>
+
+
+    <!-- Carbon -->
+    <section class="carbon dark" id="abt">
+      <div class="content">
+        <h2>Ready To Help</h2>
+        <p>Having a Helper is definitely a great deal for working women because it will reduce their household duties
+          like, the laundry, grocery shopping, cooking and cleaning the house. These duties are well-taken care by
+          the
+          maids which will allow working women to take a breath and live a tension free life.</p>
+
+        <p>It gets hard to manage domestic work around the house and other productive work in cities and in
+          developing cities .To increase productivity or productive time and to increase employment in the less
+          educated
+          class, We propose a portal rather a medium to connect and to make this part of our daily busy routine,
+          one
+          less
+          thing to worry about To connect....helpers and clients</p>
+        <a href="aboutus.html" class="btn">
+          Learn More <i class="hpage"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Follow -->
+    <section class="follow">
+      <p>Follow us on :</p>
+      <a href="https://facebook.com">
+        <img src="https://i.ibb.co/LrVMXNR/social-fb.png" alt="Facebook">
+      </a>
+      <a href="https://twitter.com">
+        <img src="https://i.ibb.co/vJvbLwm/social-twitter.png" alt="Twitter">
+      </a>
+      <a href="https://linkedin.com">
+        <img src="https://i.ibb.co/b30HMhR/social-linkedin.png" alt="Linkedin">
+      </a>
+    </section>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div><i class="fdown"></i> English</div>
+      <ul>
+        <li><a href="#">Sitemap</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy & cookies</a></li>
+        <li><a href="#">Terms of use</a></li>
+        <li><a href="#">Trademarks</a></li>
+        <li><a href="#">Safety Measures</a></li>
+        <li><a href="#">About our ads</a></li>
+        <li><a href="#">&copy; Ready to Help</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+
+</html>
